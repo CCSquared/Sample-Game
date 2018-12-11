@@ -16,7 +16,7 @@ public class MainApp extends JFrame{
         blueBall.setBallFillColor(Color.black);
         blueBall.drawBall(window);
         
-       // SwingUtilities.updateComponentTreeUI(window);
+       	SwingUtilities.updateComponentTreeUI(window);
         double x = 0;
         double y = 0;
         while(true){
