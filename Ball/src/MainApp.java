@@ -21,16 +21,16 @@ public class MainApp extends JFrame{
         double y = 0;
         while(true){
 	        while(x<375){
-	        	x+=0.0001;
-	        	y+=0.0001;
+	        	x+=0.00001;
+	        	y+=0.00001;
 	        	blueBall.setBallX((int)x);
 	        	blueBall.setBallY((int)y);
 	        	window.repaint();
 
 	        }
 	        while(x>0){
-	        	x-=0.0001;
-	        	y-=0.0001;
+	        	x-=0.00001;
+	        	y-=0.00001;
 	        	blueBall.setBallX((int)x);
 	        	blueBall.setBallY((int)y);
 	        	window.repaint();
