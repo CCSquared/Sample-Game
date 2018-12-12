@@ -28,7 +28,6 @@ public class MainApp extends JFrame{
         	nanoDeltaFixed += System.nanoTime()-prevNanoFixed;
         	if (nanoDeltaFixed>16666667) {
         		deltaFixed = nanoDeltaFixed/1000000.0;
-        		System.out.println(deltaFixed);
         		prevNanoFixed = System.nanoTime();
         		fixedProcess(deltaFixed);
         		nanoDeltaFixed = 0;
@@ -63,8 +62,5 @@ public class MainApp extends JFrame{
         window.setSize(406,428);
         window.setResizable(false);
         window.setVisible(true);
-        //System.out.println(window.getContentPane().getSize());
-        long millis = System.currentTimeMillis();
-        System.out.println(millis);
     }
 }
