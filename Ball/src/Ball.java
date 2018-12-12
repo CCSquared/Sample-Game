@@ -83,7 +83,10 @@ public class Ball
  
  
     private class MyComponent extends JComponent{
-        public void paint(Graphics g){
+
+		private static final long serialVersionUID = 1L;
+
+		public void paint(Graphics g){
              
             if (fillBall) //Fill first, and then draw outline.
             {

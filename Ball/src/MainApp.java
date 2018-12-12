@@ -6,7 +6,9 @@ import javax.swing.SwingUtilities;
  
 public class MainApp extends JFrame{
      
-    static JFrame window = new JFrame();
+
+	private static final long serialVersionUID = 1L;
+	static JFrame window = new JFrame();
     static Ball blueBall = new Ball(0,0,25,25,Color.black,window);
     static int nanoDeltaFixed = 0;
     static long prevNanoFixed = 0;
@@ -33,9 +35,10 @@ public class MainApp extends JFrame{
         	}
         }
     }
+    /*
     private static void process(double delta){ //Not working yet
     	
-    }
+    }*/
     private static void fixedProcess(double delta){ //will be called every 1/60 of a second, delta is time in sec from last call
 		if(blueBall.getBallX()>375 && toggle == false)
 			toggle = true;
