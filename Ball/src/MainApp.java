@@ -7,53 +7,53 @@ import javax.swing.SwingUtilities;
 public class MainApp extends JFrame{
      
     static JFrame window = new JFrame();
-     
+    static Ball blueBall = new Ball(0,0,25,25,Color.black,window);
+    static int nanoDeltaFixed = 0;
+    static long prevNanoFixed = 0;
+    static double deltaFixed = 0;
+    static int nanoDelta = 0;
+    static long prevNano = 0;
+    static double delta = 0;
+    static boolean toggle = false;
     public static void main(String[] args) {
-         
-        createWindow();
-         
-        Ball blueBall = new Ball(0,0,25,25,Color.black,window);
         blueBall.setBallFillColor(Color.black);
         blueBall.drawBall(window);
-        
+        createWindow();
+         
        	SwingUtilities.updateComponentTreeUI(window);
-        double x = 0;
-        double y = 0;
-        //delta is milliseconds between each loop
-        int nanoDelta = 0;
-        long prevNano = 0;
-        double delta = 0;
-        boolean toggle = false;
+
         while(true){
-        	nanoDelta += System.nanoTime()-prevNano;
-        	if (nanoDelta>16666667) { //restricts loop to only loop every 1/60 of a second
-        		delta = nanoDelta/1000000.0;
-        		System.out.println(delta);
-        		prevNano = System.nanoTime();
-        		nanoDelta = 0;
-        		if(x>375 && toggle == false)
-        			toggle = true;
-        		else if(x<0 && toggle == true)
-        			toggle = false;
-		        if(toggle == false){
-		        	x+=0.01;
-		        	y+=0.01;
-		        	blueBall.setBallX((int)x);
-		        	blueBall.setBallY((int)y);
-		        	window.repaint();
-	
-		        }
-		        if(toggle == true){
-		        	x-=0.01;
-		        	y-=0.01;
-		        	blueBall.setBallX((int)x);
-		        	blueBall.setBallY((int)y);
-		        	window.repaint();
-		        }
+        	nanoDeltaFixed += System.nanoTime()-prevNanoFixed;
+        	if (nanoDeltaFixed>16666667) {
+        		deltaFixed = nanoDeltaFixed/1000000.0;
+        		System.out.println(deltaFixed);
+        		prevNanoFixed = System.nanoTime();
+        		fixedProcess(deltaFixed);
+        		nanoDeltaFixed = 0;
         	}
-	        
         }
     }
+    private static void process(double delta){ //Not working yet
+    	
+    }
+    private static void fixedProcess(double delta){ //will be called every 1/60 of a second, delta is time in sec from last call
+		if(blueBall.getBallX()>375 && toggle == false)
+			toggle = true;
+		else if(blueBall.getBallX()<0 && toggle == true)
+			toggle = false;
+        if(toggle == false){
+        	blueBall.setBallX((blueBall.getBallX()+0.01));
+        	blueBall.setBallY((blueBall.getBallY()+0.01));
+        	window.repaint();
+
+        }
+        if(toggle == true){
+        	blueBall.setBallX((blueBall.getBallX()-0.01));
+        	blueBall.setBallY((blueBall.getBallY()-0.01));
+        	window.repaint();
+        }
+    }
+    
     public static void createWindow()
     {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

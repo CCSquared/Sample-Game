@@ -11,8 +11,8 @@ public class Ball
     private Color ballFillColor;
     private Color ballBorderColor;
      
-    private int ballX = 0;
-    private int ballY = 0;
+    private double ballX = 0;
+    private double ballY = 0;
     private int ballWidth = 0;
     private int ballHeight = 0;
      
@@ -22,7 +22,7 @@ public class Ball
         ballBorderColor = Color.black;
     }
  
-    Ball(int ballX, int ballY, int ballWidth, int ballHeight, Color ballBorderColor, JFrame window){ //Constructor
+    Ball(double ballX, double ballY, int ballWidth, int ballHeight, Color ballBorderColor, JFrame window){ //Constructor
         // X , Y , Width, Height, Border Colour, container
         this.setBallBorderColor(ballBorderColor);
         this.setBallWidth(ballWidth);
@@ -46,17 +46,17 @@ public class Ball
         this.ballBorderColor = BallBorderColor;
     }
  
-    public int getBallX() {
+    public double getBallX() {
         return ballX;
     }
-    public void setBallX(int ballX) {
+    public void setBallX(double ballX) {
         this.ballX = ballX;
     }
  
-    public int getBallY() {
+    public double getBallY() {
         return ballY;
     }
-    public void setBallY(int ballY) {
+    public void setBallY(double ballY) {
         this.ballY = ballY;
     }
  
@@ -88,11 +88,11 @@ public class Ball
             if (fillBall) //Fill first, and then draw outline.
             {
                 g.setColor(ballFillColor);
-                g.fillOval(getBallX(),getBallY(), getBallHeight(),getBallWidth());
+                g.fillOval((int)getBallX(),(int)getBallY(), getBallHeight(),getBallWidth());
             }
              
             g.setColor(getBallBorderColor());
-            g.drawOval(getBallX(),getBallY(), getBallHeight(),getBallWidth());
+            g.drawOval((int)getBallX(),(int)getBallY(), getBallHeight(),getBallWidth());
              
         }
     }
