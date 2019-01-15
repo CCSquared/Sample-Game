@@ -95,20 +95,31 @@ public class Ball
     //Move the ball.
     public void move() {
     	
+    	if (vDir == MoveVerticalDirection.Up) {
+    		ballY -= velocity[1];
+    	} else {
+    		ballY += velocity[1];
+    	}
     	
+    	if (hDir == MoveHorizontalDirection.Left) {
+    		ballX -= velocity[0];
+    	} else {
+    		ballX += velocity[0];
+    	}
     	
     }
     
     //Toggle horizontal direction.
     public void toggleHorizontal() {
     	
+    	hDir = (hDir == MoveHorizontalDirection.Left) ? MoveHorizontalDirection.Right : MoveHorizontalDirection.Left;
     	
     }
     
     //Toggle vertical direction.
     public void toggleVertical() {
     	
-    	
+    	vDir = (vDir == MoveVerticalDirection.Up) ? MoveVerticalDirection.Down :MoveVerticalDirection.Up;
     	
     }
      
