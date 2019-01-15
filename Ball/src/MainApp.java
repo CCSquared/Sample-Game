@@ -1,9 +1,12 @@
 import java.awt.Color;
- 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-public class MainApp extends JFrame{
+
+public class MainApp extends JFrame implements KeyListener{
      
 	private static final long serialVersionUID = 1L;
 	static JFrame window = new JFrame();
@@ -18,11 +21,14 @@ public class MainApp extends JFrame{
     static boolean toggle = false;
     static Ball blueBall = new Ball(0,0,25,25,Color.black,window);
     public static void main(String[] args) {
+
     	//initialization here
         blueBall.setBallFillColor(Color.black);
         blueBall.drawBall(window);
         createWindow();
        	SwingUtilities.updateComponentTreeUI(window);
+       	Keys key = new Keys();
+       	window.addKeyListener(key);
        	//This is not the main loop!
         while(true){
         	long now = System.nanoTime();
@@ -48,7 +54,6 @@ public class MainApp extends JFrame{
         	blueBall.setBallX((blueBall.getBallX()+(1*delta)));
         	blueBall.setBallY((blueBall.getBallY()+(1*delta)));
         	window.repaint();
-
         }
         if(toggle == true){
         	blueBall.setBallX((blueBall.getBallX()-(1*delta)));
@@ -64,4 +69,19 @@ public class MainApp extends JFrame{
         window.setResizable(false);
         window.setVisible(true);
     }
+	@Override
+	public void keyPressed(KeyEvent e) {
+		System.out.println("Pressed");
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
