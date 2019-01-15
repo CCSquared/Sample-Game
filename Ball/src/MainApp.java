@@ -6,13 +6,14 @@ import javax.swing.SwingUtilities;
  
 public class MainApp extends JFrame{
      
-
+	//Going to change all of this loop
 	private static final long serialVersionUID = 1L;
 	static JFrame window = new JFrame();
     static Ball blueBall = new Ball(0,0,25,25,Color.black,window);
     static int nanoDeltaFixed = 0;
     static long prevNanoFixed = 0;
     static double deltaFixed = 0;
+    static double prevNanoFixedWhile = 0;
     static int nanoDelta = 0;
     static long prevNano = 0;
     static double delta = 0;
