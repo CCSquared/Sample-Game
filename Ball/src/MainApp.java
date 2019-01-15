@@ -11,7 +11,7 @@ public class MainApp extends JFrame{
     static Ball blueBall = new Ball(0,0,25,25,Color.black,window);
     static long lastLoopTime=System.nanoTime();
     static long lastFpsTime=0;
-    static final int TARGET_FPS =5;
+    static final int TARGET_FPS = 60;
     static final long OPTIMAL_TIME=1000000000 / TARGET_FPS;
     static long updateLength = 0;
     static int nanoDeltaFixed = 0;
