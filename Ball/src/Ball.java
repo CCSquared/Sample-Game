@@ -15,6 +15,17 @@ public class Ball
     private double ballY = 0;
     private int ballWidth = 0;
     private int ballHeight = 0;
+    private MoveHorizontalDirection hDir = MoveHorizontalDirection.Right;
+    private MoveVerticalDirection vDir = MoveVerticalDirection.Down;
+    public double[] velocity = { 3f, 3f };
+    
+    public enum MoveVerticalDirection {
+    	Up, Down
+    }
+    
+    public enum MoveHorizontalDirection {
+    	Left, Right
+    }
      
     public boolean fillBall = true;
  
@@ -80,8 +91,27 @@ public class Ball
     {
         frame.getContentPane().add(new MyComponent());
     }
- 
- 
+    
+    //Move the ball.
+    public void move() {
+    	
+    	
+    	
+    }
+    
+    //Toggle horizontal direction.
+    public void toggleHorizontal() {
+    	
+    	
+    }
+    
+    //Toggle vertical direction.
+    public void toggleVertical() {
+    	
+    	
+    	
+    }
+     
     private class MyComponent extends JComponent{
 
 		private static final long serialVersionUID = 1L;
