@@ -2,8 +2,7 @@ import java.awt.Color;
  
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
- 
- 
+
 public class MainApp extends JFrame{
      
 	private static final long serialVersionUID = 1L;
@@ -12,49 +11,36 @@ public class MainApp extends JFrame{
     static long lastLoopTime=System.nanoTime();
     static long lastFpsTime=0;
     static final int TARGET_FPS = 60;
-    static final long OPTIMAL_TIME=1000000000 / TARGET_FPS;
+    static final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
     static long updateLength = 0;
-    static int nanoDeltaFixed = 0;
-    static long prevNanoFixed = 0;
-    static double deltaFixed = 0;
-    static double prevNanoFixedWhile = 0;
-    static int nanoDelta = 0;
-    static long prevNano = 0;
-    static double delta = 0;
     static boolean toggle = false;
     public static void main(String[] args) {
+    	//initialization here
         blueBall.setBallFillColor(Color.black);
         blueBall.drawBall(window);
         createWindow();
-         
        	SwingUtilities.updateComponentTreeUI(window);
-
+       	//This is not the main loop!
         while(true){
         	long now = System.nanoTime();
         	long updateLength = now-lastLoopTime;
         	lastLoopTime=now;
-        	double delta = updateLength/((double)OPTIMAL_TIME);
-        	
         	lastFpsTime+=updateLength;
         	if(lastFpsTime >= 1000000000) {
         		lastFpsTime=0;
         	}
-        	
-        	
             try{
                 long gameTime = (lastLoopTime - System.nanoTime() + OPTIMAL_TIME) / 1000000;
                 System.out.println(gameTime);
                 Thread.sleep(gameTime);
-                fixedProcess(gameTime);
+                process(gameTime);
             }catch(Exception e){
             }
         }
     }
-    /*
-    private static void process(double delta){ //Not working yet
-    	
-    }*/
-    private static void fixedProcess(double delta){ //will be called every 1/60 of a second, delta is time in sec from last call
+    //This is the main loop, delta is the time in msec between each call
+    //Multiply each frame sensitive action by it
+    private static void process(double delta){ 
 		if(blueBall.getBallX()>375 && toggle == false)
 			toggle = true;
 		else if(blueBall.getBallX()<0 && toggle == true)
