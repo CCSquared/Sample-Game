@@ -6,10 +6,14 @@ import javax.swing.SwingUtilities;
  
 public class MainApp extends JFrame{
      
-	//Going to change all of this loop
 	private static final long serialVersionUID = 1L;
 	static JFrame window = new JFrame();
     static Ball blueBall = new Ball(0,0,25,25,Color.black,window);
+    static long lastLoopTime=System.nanoTime();
+    static long lastFpsTime=0;
+    static final int TARGET_FPS =5;
+    static final long OPTIMAL_TIME=1000000000 / TARGET_FPS;
+    static long updateLength = 0;
     static int nanoDeltaFixed = 0;
     static long prevNanoFixed = 0;
     static double deltaFixed = 0;
@@ -26,13 +30,24 @@ public class MainApp extends JFrame{
        	SwingUtilities.updateComponentTreeUI(window);
 
         while(true){
-        	nanoDeltaFixed += System.nanoTime()-prevNanoFixed;
-        	if (nanoDeltaFixed>16666667) {
-        		deltaFixed = nanoDeltaFixed/1000000.0;
-        		prevNanoFixed = System.nanoTime();
-        		fixedProcess(deltaFixed);
-        		nanoDeltaFixed = 0;
+        	long now = System.nanoTime();
+        	long updateLength = now-lastLoopTime;
+        	lastLoopTime=now;
+        	double delta = updateLength/((double)OPTIMAL_TIME);
+        	
+        	lastFpsTime+=updateLength;
+        	if(lastFpsTime >= 1000000000) {
+        		lastFpsTime=0;
         	}
+        	
+        	
+            try{
+                long gameTime = (lastLoopTime - System.nanoTime() + OPTIMAL_TIME) / 1000000;
+                System.out.println(gameTime);
+                Thread.sleep(gameTime);
+                fixedProcess(gameTime);
+            }catch(Exception e){
+            }
         }
     }
     /*
@@ -45,14 +60,14 @@ public class MainApp extends JFrame{
 		else if(blueBall.getBallX()<0 && toggle == true)
 			toggle = false;
         if(toggle == false){
-        	blueBall.setBallX((blueBall.getBallX()+0.01));
-        	blueBall.setBallY((blueBall.getBallY()+0.01));
+        	blueBall.setBallX((blueBall.getBallX()+(0.1*delta)));
+        	blueBall.setBallY((blueBall.getBallY()+(0.1*delta)));
         	window.repaint();
 
         }
         if(toggle == true){
-        	blueBall.setBallX((blueBall.getBallX()-0.01));
-        	blueBall.setBallY((blueBall.getBallY()-0.01));
+        	blueBall.setBallX((blueBall.getBallX()-(0.1*delta)));
+        	blueBall.setBallY((blueBall.getBallY()-(0.1*delta)));
         	window.repaint();
         }
     }
