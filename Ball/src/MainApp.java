@@ -71,17 +71,15 @@ public class MainApp extends JFrame implements KeyListener{
     }
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("Pressed");
-		
+		Keys.keyPressed(e);
 	}
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		Keys.keyReleased(e);
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		Keys.keyTyped(e);
 	}
 }
