@@ -15,17 +15,7 @@ public class Ball
     private double ballY = 0;
     private int ballWidth = 0;
     private int ballHeight = 0;
-    private MoveHorizontalDirection hDir = MoveHorizontalDirection.Right;
-    private MoveVerticalDirection vDir = MoveVerticalDirection.Down;
     public double[] velocity = { 3f, 3f };
-    
-    public enum MoveVerticalDirection {
-    	Up, Down
-    }
-    
-    public enum MoveHorizontalDirection {
-    	Left, Right
-    }
      
     public boolean fillBall = true;
  
@@ -95,31 +85,22 @@ public class Ball
     //Move the ball.
     public void move() {
     	
-    	if (vDir == MoveVerticalDirection.Up) {
-    		ballY -= velocity[1];
-    	} else {
-    		ballY += velocity[1];
-    	}
-    	
-    	if (hDir == MoveHorizontalDirection.Left) {
-    		ballX -= velocity[0];
-    	} else {
-    		ballX += velocity[0];
-    	}
+    	ballX += velocity[0];
+    	ballY += velocity[1];
     	
     }
     
     //Toggle horizontal direction.
     public void toggleHorizontal() {
     	
-    	hDir = (hDir == MoveHorizontalDirection.Left) ? MoveHorizontalDirection.Right : MoveHorizontalDirection.Left;
+    	velocity[0] *= -1;
     	
     }
     
     //Toggle vertical direction.
     public void toggleVertical() {
     	
-    	vDir = (vDir == MoveVerticalDirection.Up) ? MoveVerticalDirection.Down :MoveVerticalDirection.Up;
+    	velocity[1] *= -1;
     	
     }
      
