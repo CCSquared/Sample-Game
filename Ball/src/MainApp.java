@@ -28,7 +28,6 @@ public class MainApp extends JFrame implements KeyListener{
         createWindow();
        	SwingUtilities.updateComponentTreeUI(window);
        	Keys key = new Keys();
-       	window.addKeyListener(key);
        	//This is not the main loop!
         while(true){
         	long now = System.nanoTime();
