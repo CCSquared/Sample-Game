@@ -7,7 +7,7 @@ import javax.swing.SwingUtilities;
 
 
 public class MainApp extends JFrame implements KeyListener{
-     
+	
 	private static final long serialVersionUID = 1L;
 	static JFrame window = new JFrame();
    

@@ -7,7 +7,6 @@ public class Keys {
 
 	public static void keyPressed(KeyEvent e) {
 		
-		
 	}
 
 	public static void keyReleased(KeyEvent e) {
