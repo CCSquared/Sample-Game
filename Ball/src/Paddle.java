@@ -43,7 +43,7 @@ public class Paddle {
 	public void move(int v) {
 		paddleY+=v;
 	}
-	public void drawBall(JFrame frame) {
+	public void drawPaddle(JFrame frame) {
         frame.getContentPane().add(new MyComponent());
     }
 	private class MyComponent extends JComponent{
