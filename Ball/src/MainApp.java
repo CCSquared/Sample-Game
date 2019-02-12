@@ -21,7 +21,7 @@ public class MainApp extends JFrame{
     static Ball blueBall = new Ball(0,0,25,25,Color.black,window);
     static Paddle testPaddle = new Paddle(200,200);
     public static void main(String[] args) {
-    	
+    	System.out.println("PIE");
     	window.addKeyListener(new KeyListener() {
 			public void keyTyped(KeyEvent e) {
 			}
