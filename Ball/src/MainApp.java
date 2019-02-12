@@ -57,7 +57,7 @@ public class MainApp extends JFrame{
         blueBall.drawBall(window);
         createWindow();
        	SwingUtilities.updateComponentTreeUI(window);
-       	Keys key = new Keys();
+       	//Keys key = new Keys();
        	//This is not the main loop!
         while(true){
         	long now = System.nanoTime();
