@@ -6,12 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 
-public class MainApp extends JFrame implements KeyListener{
+public class MainApp extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
-	static JFrame window = new JFrame();
-   
-    
+	static JFrame window = new JFrame("Pong");
+	
     static long lastLoopTime=System.nanoTime();
     static long lastFpsTime=0;
     static final int TARGET_FPS = 60;
@@ -20,9 +19,41 @@ public class MainApp extends JFrame implements KeyListener{
     
     static boolean toggle = false;
     static Ball blueBall = new Ball(0,0,25,25,Color.black,window);
+    static Paddle testPaddle = new Paddle(200,200);
     public static void main(String[] args) {
-
+    	
+    	window.addKeyListener(new KeyListener() {
+			public void keyTyped(KeyEvent e) {
+			}
+			
+			public void keyPressed(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_UP:
+					System.out.println("Hello ");
+					break;
+				case KeyEvent.VK_DOWN:
+					System.out.println("World");
+					break;
+					/*
+				case KeyEvent.VK_LEFT:
+					game.move(-1);
+					break;
+				case KeyEvent.VK_RIGHT:
+					game.move(+1);
+					break;
+				case KeyEvent.VK_SPACE:
+					game.dropDown();
+					game.score += 1;
+					break;*/
+				} 
+			}
+			
+			public void keyReleased(KeyEvent e) {
+			}
+		});
+    	
     	//initialization here
+    	
         blueBall.setBallFillColor(Color.black);
         blueBall.drawBall(window);
         createWindow();
@@ -68,17 +99,4 @@ public class MainApp extends JFrame implements KeyListener{
         window.setResizable(false);
         window.setVisible(true);
     }
-	@Override
-	public void keyPressed(KeyEvent e) {
-		Keys.keyPressed(e);
-	}
-	
-	@Override
-	public void keyReleased(KeyEvent e) {
-		Keys.keyReleased(e);
-	}
-	@Override
-	public void keyTyped(KeyEvent e) {
-		Keys.keyTyped(e);
-	}
 }
