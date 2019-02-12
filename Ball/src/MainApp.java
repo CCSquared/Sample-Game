@@ -10,7 +10,7 @@ public class MainApp extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	static JFrame window = new JFrame("Pong");
-	
+
     static long lastLoopTime=System.nanoTime();
     static long lastFpsTime=0;
     static final int TARGET_FPS = 60;
@@ -98,5 +98,6 @@ public class MainApp extends JFrame{
         window.setSize(406,428);
         window.setResizable(false);
         window.setVisible(true);
+        
     }
 }

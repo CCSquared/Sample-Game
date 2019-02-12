@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
+
 public class Paddle {
 	private Color paddleFillColor = Color.BLACK;
 	private Color paddleBorderColor = Color.BLACK;
@@ -41,6 +43,9 @@ public class Paddle {
 	public void move(int v) {
 		paddleY+=v;
 	}
+	public void drawBall(JFrame frame) {
+        frame.getContentPane().add(new MyComponent());
+    }
 	private class MyComponent extends JComponent{
 		private static final long serialVersionUID = 1L;
 		public void paint(Graphics g){
