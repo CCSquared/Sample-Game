@@ -3,6 +3,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 
 
@@ -16,15 +17,14 @@ public class MainApp extends JFrame{
     static final int TARGET_FPS = 60;
     static final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
     static long updateLength = 0;
-    
+    static JLayeredPane layeredPane = new JLayeredPane();
     static boolean toggle = false;
-    static Ball blueBall = new Ball(0,0,25,25,Color.black,window);
-    static Paddle testPaddle = new Paddle(200,200);
+    static Ball blueBall = new Ball(0,0,25,25,Color.black,layeredPane);
+    static Paddle testPaddle = new Paddle(50,50,25,25,layeredPane);
     public static void main(String[] args) {
     	window.addKeyListener(new KeyListener() {
 			public void keyTyped(KeyEvent e) {
 			}
-			
 			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_UP:
@@ -54,9 +54,12 @@ public class MainApp extends JFrame{
     	//initialization here
     	
         blueBall.setBallFillColor(Color.black);
-        blueBall.drawBall(window);
+        
+        blueBall.drawBall(layeredPane);
+        testPaddle.drawPaddle(layeredPane);
         createWindow();
        	SwingUtilities.updateComponentTreeUI(window);
+       	window.add(layeredPane);
        	//Keys key = new Keys();
        	//This is not the main loop!
         while(true){

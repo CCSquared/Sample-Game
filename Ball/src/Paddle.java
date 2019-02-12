@@ -3,6 +3,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 
 public class Paddle {
 	private Color paddleFillColor = Color.BLACK;
@@ -12,9 +13,14 @@ public class Paddle {
 	private int paddleWidth=0;
 	private int paddleHeight=0;
 	
-	public Paddle(double x,double y) {
+	public Paddle(double x,double y, int w, int h,JLayeredPane lp) {
 		paddleX=x;
 		paddleY=y;
+		this.setHeight(h);
+		this.setWidth(w);
+        this.drawPaddle(lp);
+		//paddleWidth=w;
+		//paddleHeight=h;
 	}
 	public Color getFillColor() {
 	    return paddleFillColor;
@@ -43,16 +49,17 @@ public class Paddle {
 	public void move(int v) {
 		paddleY+=v;
 	}
-	public void drawPaddle(JFrame frame) {
-        frame.getContentPane().add(new MyComponent());
+	public void drawPaddle(JLayeredPane layeredPane) {
+        layeredPane.add(new MyComponent2(),2);
     }
-	private class MyComponent extends JComponent{
-		private static final long serialVersionUID = 1L;
+	private class MyComponent2 extends JComponent{
+		private static final long serialVersionUID = 2L;
 		public void paint(Graphics g){
-                g.setColor(getFillColor());
-                g.fillRect((int)paddleX,(int)paddleY, getHeight(),getWidth());
+                //g.setColor(getFillColor());
+                //g.fillRect((int)paddleX,(int)paddleY, getHeight(),getWidth());
                 g.setColor(getpaddleBorderColor());
                 g.drawRect((int)paddleX,(int)paddleY, getHeight(),getWidth());
+                
 		}
 	}
 }

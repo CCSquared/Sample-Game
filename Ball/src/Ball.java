@@ -3,6 +3,7 @@ import java.awt.Graphics;
  
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 
  
 public class Ball
@@ -23,14 +24,14 @@ public class Ball
         ballBorderColor = Color.black;
     }
  
-    Ball(double ballX, double ballY, int ballWidth, int ballHeight, Color ballBorderColor, JFrame window){ //Constructor
+    Ball(double ballX, double ballY, int ballWidth, int ballHeight, Color ballBorderColor, JLayeredPane lp){ //Constructor
         // X , Y , Width, Height, Border Colour, container
         this.setBallBorderColor(ballBorderColor);
         this.setBallWidth(ballWidth);
         this.setBallHeight(ballHeight);
         this.setBallX(ballX);
         this.setBallY(ballY);
-        this.drawBall(window);
+        this.drawBall(lp);
     }
      
     public Color getBallFillColor() {
@@ -77,9 +78,9 @@ public class Ball
     }
  
  
-    public void drawBall(JFrame frame) 
+    public void drawBall(JLayeredPane lp) 
     {
-        frame.getContentPane().add(new MyComponent());
+        lp.add(new MyComponent(),0);
     }
     
     //Move the ball.
